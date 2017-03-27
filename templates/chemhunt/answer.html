@@ -1,0 +1,40 @@
+{%  extends 'chemhunt/base.html' %}
+
+{% block body %}
+
+<h3>Do you really want to sign for {{ product.name }} ?</h3>
+    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    {%  csrf_token %}
+        <input type="hidden" name="name" value="{{ product.question }}">
+        <input type="hidden" name="date" value="">
+
+{{ context.question }}
+{{ item.question }}
+        <input type="hidden" name="accepted" value="Yes">
+
+       <button type="submit" class="btn btn-success"> Allow</button>
+
+
+
+    </form>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

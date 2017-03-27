@@ -1,0 +1,60 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+
+
+{% get_providers as socialaccount_providers %}
+
+{% if socialaccount_providers %}
+<p>{% blocktrans with site.name as site_name %}{% endblocktrans %}</p>
+
+<div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name" style="margin-left: -70%;">ChemHunt</h1>
+
+            </div>
+            <br>
+            <h3>Welcome to Chemhunt</h3>
+            <p>an event by Coding Club and Chemical Engineering Association
+                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+            </p>
+            <p>Register here to play......</p>
+
+<div class="socialaccount_ballot">
+
+  <ul class="socialaccount_providers">
+    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+  </ul>
+</div>
+            </div>
+
+</div>
+      </div>
+</div>
+<div class="footer">
+
+            <div>
+             Event By Coding Club and Chemical Engineering Association
+            </div>
+        </div>
+    <!-- Mainly scripts -->
+
+
+
+
+{% else %}
+
+
+{% endif %}
+
+
+
+{% endblock %}

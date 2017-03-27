@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% load staticfiles %}
+    <title>ChemHunt| Login</title>
+
+    <link rel="stylesheet" href="{% static 'chemhunt/css/bootstrap.min.css' %}">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="{% static 'chemhunt/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'chemhunt/css/style.css' %}" rel="stylesheet">
+    <script type='text/javascript' src="{% static 'chemhunt/js/jquery-2.1.1.js' %}"></script>
+    <script type='text/javascript' src="{% static 'chemhunt/js/bootstrap.min.js' %}"></script>
+
+</head>
+  <body class="gray-bg">
+
+    {% block body %}
+
+
+    {% block content %}
+    {% endblock %}
+    {% endblock %}
+    {% block extra_body %}
+    {% endblock %}
+  </body>
+</html>

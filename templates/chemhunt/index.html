@@ -1,0 +1,194 @@
+
+{% extends 'chemhunt/base.html' %}
+
+<title>{%  block title %}{% endblock %}</title>
+
+{%  block body %}
+
+
+
+<div class="col-xs-9" style="background-color: #fafafa; height: 100vh; ">
+<p style="font-size:60px;margin-top:4px;padding:20px; color: #bdbdbd;">ChemHunt</p>
+
+<div class="col-xs-12" style="background-color:transparent; border-bottom:#e7e7e7 solid 0.5px; padding: 0px; margin:0px; margin-top: 10px;">
+   <div class="col-xs-3" style="margin: 0px; margin-left:12.5%;" align="center">
+   <p  data-toggle="modal" data-target="#instruction" id="ele">Instruction</p>
+   </div>
+   <div class="col-xs-3" align="center">
+   <p data-toggle="modal" data-target="#leaderboard" id="ele">Leaderboard</p>
+   </div>
+   <div class="col-xs-3" align="center">
+       <a href="/accounts/logout/"><p id="ele">Logout</p></a>
+   </div>
+
+
+</div>
+<div class="row">
+<div class="col-xs-12" style="margin-left: 25%; margin-top: 10%;">
+
+ <div class="middle-box text-center logincreen animated fadeInDown">
+        <div>
+
+            <br>
+            <p style="font-size: 16px; line-height: 30px;">Assume that BITS runs on bio gas electricity and due to an
+
+accident, the bio gas resources have abruptly been depleted
+
+and the campus runs out of power. And since the campus is
+
+full of energy and is loaded with a technological extravaganza
+
+that is Apogee, you need power and you have run out of
+
+resources. The fest begins in half an hour. Now, you need
+
+appropriate reactants and reagents to produce biogas but
+
+you are not sure where to find them on campus. Luckily, your
+
+chemistry professor has left you a huge mind blowing clue
+
+base to find these chemicals and their locations. Now, using
+
+your knowledge of basic chemistry and even more
+
+importantly, your knowledge of BITS as your campus try to
+
+figure out where and what these chemicals are in your
+
+campus and find out how you will produce this biogas and
+
+supply it to your power plant at BITS.
+
+These are what are left in the clue base given by your
+
+professor: <br> <br>
+<a href="{% url 'chemhunt:detail' player.question_no  %}">
+  <button class="btn btn-primary" type="submit" style="width: 200px;"> Continue </button></a>
+</p>
+
+
+        </div>
+    </div>
+
+</div>
+</div>
+  </div>
+<div class="col-xs-3" style="height:100vh;background:#0d47a1; padding: 50px;">
+   <h2 style="font-family: 'Roboto', sans-serif; color:#fafafa; margin-top: 8vh; letter-spacing: 1px;">Chem Hunt</h2>
+    <br><br>
+    <div class="col-xs-2" style="padding:0px;margin:0px;">
+    <i class="medium material-icons" style="margin-top:0px; color: #fff;">assignment_ind</i>
+    </div>
+    <div class="col-xs-10" style="padding:0px;margin:0px;">
+    <p style="font-size:16px;font-family:'Roboto', sans-serif;color:#fafafa;font-weight:lighter;margin-top:3px;">
+    <span id="user.username">{% if request.user.is_authenticated  %}
+    {{ user.socialaccount_set.all.0.extra_data.name }}
+    {% endif %}</span></p>
+    </div>
+    <br>
+    <div class="col-xs-2" style="padding:0px;margin:0px;">
+    <i class="medium material-icons" style="margin-top:0px; color: #fff;">stars</i>
+    </div>
+    <div class="col-xs-10" style="padding:0px;margin:0px;">
+    <p style="font-size:16px;font-family:'Roboto', sans-serif;color:#fafafa;font-weight:lighter;margin-top:3px;">
+    <span id="user.points">{{ player.score }}</span></p>
+    </div>
+    <br>
+    <div class="col-xs-2" style="padding:0px;margin:0px;">
+    <i class="medium material-icons" style=" color: #fff;">perm_identity</i>
+    </div>
+    <div class="col-xs-10" style="padding:0px;margin:0px;">
+    <p style="font-size:16px;font-family:'Roboto', sans-serif;color:#fafafa;font-weight:lighter; margin-top: 3px;">
+    <span id="user.rank">{{ player.rank }}</span></p>
+     <p style="font-family:'Roboto', sans-serif;font-size:18px; color:#fafafa; font-weight:lighter; margin-top:40vh; margin-left: -45px;">You have <span style="font-weight: bold;"> 1 </span> Skips left</p>
+
+    </div>
+   <footer>
+   <p style="font-family:'Roboto', sans-serif;font-size:12px;color:#fafafa;font-weight:lighter;margin-top:61vh;">An event by Coding Club and Chemical Engineering Association</p>
+   </footer>
+
+   </div>
+
+   <div class="modal fade" tabindex="-1" role="dialog" id="instruction">
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content" style="border-radius: 0;">
+      <div class="modal-header" style="background-color: #0d47a1;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" align="center" style="padding: 20px; color: #fff;"> Instructions</h3>
+      </div>
+      <div class="modal-body">
+        <p style="color:#000000;"> Welcome to the game. In this section here are some of the points to be kept in mind while playing the game<br><br>
+
+	  <b>You will have 1 skip which you will get when you click the skip button in the game. But remember that skip will cause you a loss of 25 points.</b><br>      Type your answer in the area provided below the question and then click on submit button in order to check if you are correct or not.<br><br>
+	  Each correct answer will fetch you 100 points!!!. <br><br>
+	  <b> Enter the answers with first letter capital and with spaces in between two words. </b>
+	  <br><br><br>
+
+	  After reading the manual, prepare your mind for some exciting and head notching questions.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="leaderboard">
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content" style="border-radius: 0; background-color: #fafafa">
+      <div class="modal-header" style="background-color: #0d47a1;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" align="center" style="padding: 20px; color: #fff;">Leaderboard </h3>
+      </div>
+      <div class="modal-body" style="background-color: #fafafa; height: 100vh;">
+       <div class="col-xs-12" style="border: 1px solid #bdbdbd; background-color: #fff ">
+       	{% for player in leaderboard %}
+           <div class="col-xs-2">
+ <i class="material-icons circle blue" style="color: #fff; padding: 10px; margin-top: 10px; margin-bottom: 10px;">perm_identity</i>
+       	</div>
+       	<div class="col-xs-9" align="left" style="margin-bottom: 10px;">
+       	  <p style="font-size:20px; padding-top: 10px;" >Name: {{ player.name }} </p>
+      <span style="padding-top:1vh;">Points: {{ player.score }}  <br>
+
+
+      </span>
+       	</div>
+           {% endfor %}
+<br>
+       </div>
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+<script type="text/javascript">
+    $(window).load(function(){
+        $('#welcoe').modal('show');
+    });
+</script>
+</body>
+</html>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

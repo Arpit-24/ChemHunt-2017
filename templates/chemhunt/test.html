@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Welcome
+<p> {% if request.user.is_authenticated  %}
+
+
+        {{ user.socialaccount_set.all.0.extra_data.name }}
+
+
+    {% endif %}</p>
+
+
+<a href="{% url 'chemhunt:detail' player.question_no %}">Lets Go</a>
+</body>
+</html>
